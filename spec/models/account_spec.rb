@@ -18,6 +18,9 @@ RSpec.describe Account, type: :model do
   describe "ActiveRecord Validations" do
     it { should belong_to(:user) }
     it { should validate_presence_of(:user) }
+
+    it { should have_many(:account_transactions) }
+    it { should accept_nested_attributes_for(:account_transactions).allow_destroy(true) }
   end
 
   describe "Custom callback validations" do

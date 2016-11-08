@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :transaction_types
   resources :account_types
   resources :account_transactions
+  resources :users
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.

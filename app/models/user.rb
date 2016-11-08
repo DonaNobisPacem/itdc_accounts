@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
       user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def user_type
+    admin ? "Admin" : "Regular"
+  end
 end

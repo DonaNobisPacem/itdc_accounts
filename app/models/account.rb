@@ -8,7 +8,6 @@ class Account < ActiveRecord::Base
 
   after_create :set_balance
 
-
   def set_balance
     self.balance = self.beginning_amount
   end

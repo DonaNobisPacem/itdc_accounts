@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Account, type: :model do
   it "has a valid factory" do
-    expect( FactoryGirl.build(:account) ).to be_valid 
+    @user = FactoryGirl.create(:user)
+    expect( FactoryGirl.build(:account, user: @user) ).to be_valid 
   end
 
   describe "ActiveModel Validations" do
@@ -19,8 +20,8 @@ RSpec.describe Account, type: :model do
     it { should validate_presence_of(:user) }
   end
 
-  descrive "Custom callback validations" do
-    context "Beginning amount == Balance after creation" do
+  describe "Custom callback validations" do
+    it "should have Beginning amount == Balance after creation" do
       @user = FactoryGirl.create(:user)
       @account = FactoryGirl.build(:account, beginning_amount: 1000.00, balance: 0.00)
       @account.save

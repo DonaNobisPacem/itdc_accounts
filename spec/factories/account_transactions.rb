@@ -4,7 +4,7 @@ FactoryGirl.define do
     amount "9.99"
     prev_balance "9.99"
     new_balance "9.99"
-    description "MyText"
+    description {FFaker::Lorem.paragraph}
     account nil
   end
 end

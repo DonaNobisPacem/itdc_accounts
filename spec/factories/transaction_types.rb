@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :transaction_type do
-    title "MyString"
-    description "MyText"
+    title {FFaker::Lorem.word}
+    description {FFaker::Lorem.paragraph}
   end
 end

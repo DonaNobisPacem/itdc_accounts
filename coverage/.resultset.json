@@ -135,6 +135,7 @@
       ],
       "/home/donanobispacem/ovpd_projects/itdc_accounts/app/models/account_type.rb": [
         1,
+        1,
         null
       ],
       "/home/donanobispacem/ovpd_projects/itdc_accounts/spec/models/transaction_type_spec.rb": [
@@ -153,6 +154,7 @@
       ],
       "/home/donanobispacem/ovpd_projects/itdc_accounts/app/models/transaction_type.rb": [
         1,
+        1,
         null
       ],
       "/home/donanobispacem/ovpd_projects/itdc_accounts/spec/models/user_spec.rb": [
@@ -165,6 +167,6 @@
         null
       ]
     },
-    "timestamp": 1478598012
+    "timestamp": 1478598081
   }
 }

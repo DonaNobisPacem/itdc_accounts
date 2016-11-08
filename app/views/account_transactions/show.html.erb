@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Transaction type:</strong>
+  <%= @account_transaction.transaction_type %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @account_transaction.amount %>
+</p>
+
+<p>
+  <strong>Prev balance:</strong>
+  <%= @account_transaction.prev_balance %>
+</p>
+
+<p>
+  <strong>New balance:</strong>
+  <%= @account_transaction.new_balance %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @account_transaction.description %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @account_transaction.account %>
+</p>
+
+<%= link_to 'Edit', edit_account_transaction_path(@account_transaction) %> |
+<%= link_to 'Back', account_transactions_path %>

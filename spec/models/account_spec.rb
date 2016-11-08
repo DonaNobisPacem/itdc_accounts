@@ -8,11 +8,11 @@ RSpec.describe Account, type: :model do
 
   describe "ActiveModel Validations" do
     it { should validate_presence_of(:account_type) }
-    it { should validate_presence_of(:beginning_amount) }
-    it { should validate_presence_of(:balance) }
+    #it { should validate_presence_of(:beginning_amount) }
+    #it { should validate_presence_of(:balance) }
 
     it { should validate_numericality_of(:beginning_amount).is_greater_than_or_equal_to(0) }
-    # it { should validate_numericality_of(:balance).is_greater_than_or_equal_to(0) }
+    it { should validate_numericality_of(:balance) }
   end
 
   describe "ActiveRecord Validations" do
@@ -23,8 +23,7 @@ RSpec.describe Account, type: :model do
   describe "Custom callback validations" do
     it "should have Beginning amount == Balance after creation" do
       @user = FactoryGirl.create(:user)
-      @account = FactoryGirl.build(:account, beginning_amount: 1000.00, balance: 0.00)
-      @account.save
+      @account = FactoryGirl.create(:account, user: @user, beginning_amount: 1000.00)
       expect(@account.balance).to eq(@account.beginning_amount)
     end
   end

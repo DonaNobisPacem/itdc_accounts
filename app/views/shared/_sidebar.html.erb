@@ -1,5 +1,31 @@
-<div class="container" style="background-color: green">
-  <div class="row">
-    sidebar lul
+<div class="container sidebar-elements">
+  <div class="row flex-md-top">
+    <ul class="nav nav-sidebar">
+      <li class="nav-item">
+        <b><%= link_to "<i class=\"fa fa-home\"></i> AMS".html_safe, root_path %></b>
+      </li>
+    </ul>
+  </div>
+  <div class="row flex-items-md-middle">
+    <ul class="nav nav-sidebar">
+      <li class="nav-item">
+        <%= image_tag current_user.image, class: "img-fluid" %>
+        <p>
+          <small><%= current_user.email %></small><br>
+          <b><%= current_user.last_name %>, <%= current_user.first_name %></b><br>
+          <%= current_user.user_type %>
+        </p>
+      </li>
+      <li class="nav-item">
+        <%= link_to "View My Profile", current_user %>
+      </li>
+    </ul>
+  </div>
+  <div class="row flex-items-md-bottom">
+    <ul class="nav nav-sidebar">
+      <li class="nav-item">
+        <%= link_to "<i class=\"fa fa-sign-out\"></i> Sign out".html_safe, destroy_user_session_path, method: :delete %>
+      </li>
+    </ul>
   </div>
 </div>

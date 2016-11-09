@@ -1,8 +1,7 @@
-<h1>Welcome <%= current_user.last_name %>, <%= current_user.first_name %></h1>
-<%= image_tag current_user.image , height: 50 %>
+<h1>Welcome </h1>
+
 <p>User Type: <%= current_user.user_type %></p>
 
-<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
 
 <%= render_homepage %>
 

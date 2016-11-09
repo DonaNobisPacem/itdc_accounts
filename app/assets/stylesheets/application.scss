@@ -9,6 +9,14 @@ $enable-flex: true;
   height: 100vh;
 }
 
+.nav-sidebar {
+  padding-top: 15px;
+}
+
+.nav-item p {
+  color: white;
+}
+
 .strike {
     display: block;
     text-align: center;

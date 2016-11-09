@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :transaction_types
   resources :account_types
   resources :account_transactions
-  
+  resources :users, only: :show
   scope "/admin" do
-    resources :users
+    resources :users, except: :show
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

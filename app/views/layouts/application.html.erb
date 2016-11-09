@@ -14,7 +14,7 @@
     <div id="main-container" class="container-fluid">
       <div class="row">       
         <% if user_signed_in? %>
-          <div class="col-md-2 sidebar">
+          <div id="sidebar" class="col-md-2 sidebar fixedsticky">
             <%= render 'shared/sidebar' %>
           </div>
           <div class="col-md-10">
@@ -54,4 +54,7 @@
       </div>
     </div>
   </body>
+  <script>
+    $('#sidebar').fixedsticky();
+  </script>
 </html>

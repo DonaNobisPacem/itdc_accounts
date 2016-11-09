@@ -3,6 +3,7 @@ $enable-flex: true;
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "fixedsticky";
 
 .sidebar {
   background-color: #091323; 
@@ -20,6 +21,8 @@ $enable-flex: true;
 .nav-item b {
   color: white;
 }
+
+.fixedsticky { top: 0; }
 
 .strike {
     display: block;

@@ -5,7 +5,15 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.paginate(page: params[:page], per_page: 30)
+    if params[:q].present? || params[:t].present?
+      search = params[:q].present? ? params[:q] : "*"
+      where = {}
+      where[:admin] = params[:t] if params[:t].present?
+
+      @users = User.search search, where: where
+    else
+      @users = User.paginate(page: params[:page], per_page: 30)
+    end
   end
 
   # GET /users/1

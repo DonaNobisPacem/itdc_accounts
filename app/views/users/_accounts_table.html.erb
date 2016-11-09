@@ -1,0 +1,25 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Account Number</th>
+      <th>Account Type</th>
+      <th>Beginning Amount</th>
+      <th>Current Balance</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.id.to_s.rjust(6, '0') %></td>
+        <td><%= account.account_type_desc %></td>
+        <td><%= account.beginning_amount %></td>
+        <td><%= account.balance %></td>
+        <td><%= link_to "View details", account %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
+  <%= will_paginate @accounts, renderer: BootstrapPagination::Rails %>
+</div>

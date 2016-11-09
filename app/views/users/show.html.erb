@@ -1,40 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Viewing <%= @user.last_name %>, <%= @user.first_name %>'s profile</h1>
+<h1><b><%= @user.last_name %>, <%= @user.first_name %>'s profile</b></h1>
 
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <p>Email: <%= @user.email %></p>
-      <p>First Name: <%= @user.first_name %></p>
+      First Name: <%= @user.first_name %><br>
+      Last Name: <%= @user.last_name %>
     </div>
     <div class="col-md-6">
-      <p>User Type: <%= @user.user_type %></p>
-      <p>Last Name: <%= @user.last_name %></p>
+      Email: <%= @user.email %><br>
+      User Type: <%= @user.user_type %>
     </div>
   </div>
 </div>
+<hr>
+<h1><b>Accounts</b></h1>
 
-<h1>Accounts</h1>
 <%= link_to '<i class="fa fa-plus"></i> Add Account'.html_safe, new_account_path(user_id: @user.id), :class => "pull-right" %>
-<table class="table table-hover table-responsive">
-  <thead>
-    <tr>
-      <th>Account Number</th>
-      <th>Account Type</th>
-      <th>Beginning Amount</th>
-      <th>Current Balance</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render_user_accounts %>
-  </tbody>
-</table>
-<div class="text-center">
-  <%= will_paginate @accounts, renderer: BootstrapPagination::Rails %>
-</div>
-
+<%= render_accounts %>
 
 <div class="pull-right">
   <%= link_to 'Edit', edit_user_path(@user) %> |

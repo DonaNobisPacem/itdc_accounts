@@ -1,27 +1,42 @@
 <div class="container sidebar-elements">
-  <div class="row flex-md-top">
+  <div class="row">
     <ul class="nav nav-sidebar">
       <li class="nav-item">
         <b><%= link_to "<i class=\"fa fa-home\"></i> AMS".html_safe, root_path %></b>
       </li>
     </ul>
   </div>
-  <div class="row flex-items-md-middle">
+  <div class="row">
     <ul class="nav nav-sidebar">
       <li class="nav-item">
+        <b><%= icon "user" %> User Information</b>
         <%= image_tag current_user.image, class: "img-fluid" %>
         <p>
           <small><%= current_user.email %></small><br>
           <b><%= current_user.last_name %>, <%= current_user.first_name %></b><br>
-          <%= current_user.user_type %>
+          <%= current_user.user_type %><br>
+          <%= link_to "View My Profile", current_user %>
         </p>
-      </li>
-      <li class="nav-item">
-        <%= link_to "View My Profile", current_user %>
       </li>
     </ul>
   </div>
-  <div class="row flex-items-md-bottom">
+
+  <% if current_user.admin %>
+  <div class="row">
+    <ul class="nav nav-sidebar">
+      <li class="nav-item">
+        <b><%= icon "lock" %> Administration Links</b><br>
+        <%= link_to "<i class=\"fa fa-users\"></i> User Management".html_safe, users_path %><br>
+        <%= link_to "<i class=\"fa fa-list\"></i> Account Types".html_safe, account_types_path %><br>
+        <%= link_to "<i class=\"fa fa-list\"></i> Transaction Types".html_safe, transaction_types_path %><br>
+      </li>
+    </ul>
+  </div>
+  <% end %>
+
+  <hr>
+
+  <div class="row">
     <ul class="nav nav-sidebar">
       <li class="nav-item">
         <%= link_to "<i class=\"fa fa-sign-out\"></i> Sign out".html_safe, destroy_user_session_path, method: :delete %>

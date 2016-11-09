@@ -1,8 +1,6 @@
-render admin
-
 <h1>User Management</h1>
-<%= link_to '<i class="fa fa-plus"></i> Add User'.html_safe, root_path, :class => "pull-right" %>
-<table class="table table-hover table-responsive">
+<%= link_to '<i class="fa fa-plus"></i> Add User'.html_safe, new_user_path, :class => "pull-right" %>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Email</th>

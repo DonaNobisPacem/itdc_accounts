@@ -65,7 +65,8 @@ end
 gem 'simple_form'
 
 gem 'font-awesome-sass'
-gem 'bootstrap-sass'
+gem 'bootstrap'
+# gem 'bootstrap-sass'
 gem 'google-webfonts-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

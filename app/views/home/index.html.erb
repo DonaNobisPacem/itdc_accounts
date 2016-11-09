@@ -2,6 +2,8 @@
 <%= image_tag current_user.image , height: 50 %>
 <p>User Type: <%= current_user.user_type %></p>
 
+<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
 <%= render_homepage %>
 
 

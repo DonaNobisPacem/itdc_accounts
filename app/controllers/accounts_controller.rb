@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @account = Account.new
+    @account = Account.new( user_id: params[:user_id] )
   end
 
   # GET /accounts/1/edit

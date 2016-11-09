@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
   resources :accounts
   resources :transaction_types
   resources :account_types
   resources :account_transactions
-  resources :users
-
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  
+  scope "/admin" do
+    resources :users
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

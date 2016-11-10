@@ -15,11 +15,14 @@
   </div>
 </div>
 <hr>
-<h1><b>Accounts</b></h1>
+<h1>
+  <b>Accounts</b>
+</h1>
 
-<%= link_to '<i class="fa fa-plus"></i> Add Account'.html_safe, new_account_path(user_id: @user.id), :class => "pull-right" %>
+<%= link_to '<i class="fa fa-plus"></i> Add Account'.html_safe, new_account_path(user_id: @user.id), class: "pull-right" %>
 <%= render_accounts %>
 
+<hr>
 <div class="pull-right">
   <%= link_to 'Edit', edit_user_path(@user) %> |
   <%= link_to 'Back', users_path %>

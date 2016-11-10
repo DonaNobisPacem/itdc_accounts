@@ -3,7 +3,7 @@ module UsersHelper
     if @accounts.empty?
       render "shared/no_entries"
     else
-      render "accounts_table"
+      render "accounts/accounts_table"
     end
   end
 end

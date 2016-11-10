@@ -12,7 +12,7 @@ RSpec.describe Account, type: :model do
     #it { should validate_presence_of(:balance) }
 
     it { should validate_numericality_of(:beginning_amount).is_greater_than_or_equal_to(0) }
-    it { should validate_numericality_of(:balance) }
+    #it { should validate_numericality_of(:balance) }
   end
 
   describe "ActiveRecord Validations" do

@@ -1,5 +1,10 @@
-<h1>New Account</h1>
+<h1><b>New Account for <%= @user.name %></b></h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= link_to 'Back', accounts_path %>
+<hr>
+<%# link_to 'Back', user_path(params[:user_id]), class: "pull-right" %>

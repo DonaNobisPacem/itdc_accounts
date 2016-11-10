@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def user_type
     admin ? "Admin" : "Regular"
   end
+
+  def name
+    last_name + ", " + first_name
+  end
 end

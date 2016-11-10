@@ -1,24 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Account type:</strong>
-  <%= @account.account_type %>
-</p>
+<%= link_to icon("angle-double-left") + " " + @account.user.name + "'s profile", user_path(@account.user) %>
+<hr>
 
-<p>
-  <strong>Beginning amount:</strong>
-  <%= @account.beginning_amount %>
-</p>
+<h1>
+  <b><%= @account.account_type_desc %></b>
+  <small><%= @account.user.name %></small>
+</h1>
 
-<p>
-  <strong>Balance:</strong>
-  <%= @account.balance %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p><h3><b>Beginning Amount:</b> <%= number_to_currency(@account.beginning_amount, unit: "P") %></h3></p>
+  </div>
+  <div class="col-md-6">
+    <p><h3><b>Current Balance:</b> <%= number_to_currency(@account.balance, unit: "P") %></h3></p>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @account.user %>
-</p>
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>

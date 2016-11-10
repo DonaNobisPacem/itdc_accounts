@@ -7,7 +7,7 @@ class AccountTransaction < ActiveRecord::Base
   validates :prev_balance, numericality: true
   validates :new_balance, numericality: true
 
-  after_create :set_computed_balance
+  before_create :set_computed_balance
 
   def set_computed_balance
     #set previous balance

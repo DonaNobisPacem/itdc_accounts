@@ -5,6 +5,10 @@ $enable-flex: true;
 @import "font-awesome";
 @import "fixedsticky";
 
+.content {  
+  padding-top: 20px; 
+} 
+
 .sidebar {
   background-color: #091323; 
   height: 100vh;
@@ -54,4 +58,8 @@ $enable-flex: true;
 .strike > span:after {
     left: 100%;
     margin-left: 15px;
+}
+
+.table tbody>tr>td.vert-align{
+    vertical-align: middle;
 }

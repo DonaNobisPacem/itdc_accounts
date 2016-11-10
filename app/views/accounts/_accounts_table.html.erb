@@ -15,10 +15,14 @@
         <td><%= account.account_type_desc %></td>
         <td><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
         <td><%= number_to_currency(account.balance, unit: "P") %></td>
-        <td class="vert-align">
-          <%= link_to "View details", account, class: "btn btn-sm btn-info" %>
-          <%= link_to "Credit", account, class: "btn btn-sm btn-primary" %>
-          <%= link_to "Debit", account, class: "btn btn-sm btn-warning" %>
+        <td>
+          <div class="pull-right">
+            <%= link_to "View details", account, class: "btn btn-sm btn-info" %>
+            <% if current_user.admin %>
+              <%= link_to "Credit", account, class: "btn btn-sm btn-primary" %>
+              <%= link_to "Debit", account, class: "btn btn-sm btn-warning" %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>

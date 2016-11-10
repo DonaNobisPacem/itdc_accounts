@@ -1,15 +1,22 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'forbidden', to: 'home#forbidden'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { 
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'registrations'
+  }
   
   resources :accounts
   resources :transaction_types
   resources :account_types
   resources :account_transactions
-  resources :users, only: :show
+  #resources :users, only: [:show]
+  #get 'profile', to: 'users#show'
+
   scope "/admin" do
-    resources :users, except: :show
+    #resources :users, except: [:show]
+    resources :users
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

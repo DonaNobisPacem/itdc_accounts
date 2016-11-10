@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @account_type.title %>
-</p>
+<h1><b><%= @account_type.title %></b></h1>
 
 <p>
   <strong>Description:</strong>
   <%= @account_type.description %>
 </p>
 
-<%= link_to 'Edit', edit_account_type_path(@account_type) %> |
-<%= link_to 'Back', account_types_path %>
+<hr>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_account_type_path(@account_type) %> |
+  <%= link_to 'Back', account_types_path %>
+</div>

@@ -18,7 +18,11 @@
         <td><%= number_to_currency(account_transaction.prev_balance, unit: "P") %></td>
         <td><%= number_to_currency(account_transaction.new_balance, unit: "P") %></td>
         <td><%= account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></td>
-        <td><%= link_to 'View Details', account_transaction, class: "btn btn-sm btn-info" %></td>
+        <td>
+          <div class="pull-right">
+            <%= link_to 'View Details', account_transaction, class: "btn btn-sm btn-info" %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -26,3 +30,16 @@
 <div class="text-md-center">
   <%= will_paginate @account_transactions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
+
+<!-- ascending/descending order toggle
+  date | credit | debit | balance
+  entries per page
+
+  summary of accounts as of X
+  name | last transaction date | balance
+
+  sumary of accounts details as of X
+  name | beginning amount | total credit | total debit | last transaction date | balance
+
+  tos page
+   -->

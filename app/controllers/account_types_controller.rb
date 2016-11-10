@@ -1,10 +1,10 @@
 class AccountTypesController < ApplicationController
   before_action :set_account_type, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin
   # GET /account_types
   # GET /account_types.json
   def index
-    @account_types = AccountType.all
+    @account_types = AccountType.paginate(page: params[:page], per_page:30)
   end
 
   # GET /account_types/1

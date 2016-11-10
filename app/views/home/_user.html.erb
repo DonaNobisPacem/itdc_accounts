@@ -1,1 +1,27 @@
-render user
+<p id="notice"><%= notice %></p>
+
+<h1><b><%= @user.last_name %>, <%= @user.first_name %>'s profile</b></h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      First Name: <%= @user.first_name %><br>
+      Last Name: <%= @user.last_name %>
+    </div>
+    <div class="col-md-6">
+      Email: <%= @user.email %><br>
+      User Type: <%= @user.user_type %>
+    </div>
+  </div>
+</div>
+<hr>
+<h1>
+  <b>Accounts</b>
+</h1>
+<%= render_accounts %>
+
+<hr>
+<div class="pull-right">
+  <%= render_edit %> | 
+  <%= link_to 'Back', root_path %>
+</div>

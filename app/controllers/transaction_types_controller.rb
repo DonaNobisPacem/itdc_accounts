@@ -4,7 +4,7 @@ class TransactionTypesController < ApplicationController
   # GET /transaction_types
   # GET /transaction_types.json
   def index
-    @transaction_types = TransactionType.all
+    @transaction_types = TransactionType.paginate(page: params[:page], per_page: 30)
   end
 
   # GET /transaction_types/1

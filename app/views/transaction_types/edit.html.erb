@@ -1,6 +1,12 @@
-<h1>Editing Transaction Type</h1>
+<h1><b>Editing <%= @transaction_type.title%></b></h1>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-12">
+    <%= render 'form' %>
+  </div>
+</div>
 
-<%= link_to 'Show', @transaction_type %> |
-<%= link_to 'Back', transaction_types_path %>
+<hr>
+<div class="pull-right">
+  <%= link_to 'Back', @transaction_type %>
+</div>

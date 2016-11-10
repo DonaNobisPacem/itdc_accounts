@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @transaction_type.title %>
-</p>
+<h1><b><%= @transaction_type.title %></b></h1>
 
 <p>
   <strong>Description:</strong>
   <%= @transaction_type.description %>
 </p>
 
-<%= link_to 'Edit', edit_transaction_type_path(@transaction_type) %> |
-<%= link_to 'Back', transaction_types_path %>
+<hr>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_transaction_type_path(@transaction_type) %> |
+  <%= link_to 'Back', transaction_types_path %>
+</div>

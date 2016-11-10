@@ -1,11 +1,10 @@
 <table class="table table-hover table-sm">
   <thead class="thead-inverse">
     <tr>
-      <th>Type</th>
-      <th>Amount</th>
-      <th>Previous Balance</th>
-      <th>New Balance</th>
       <th>Date</th>
+      <th>Credit</th>
+      <th>Debit</th>
+      <th>Balance</th>
       <th></th>
     </tr>
   </thead>
@@ -13,11 +12,10 @@
   <tbody>
     <% @account_transactions.each do |account_transaction| %>
       <tr>
-        <td><%= account_transaction.transaction_type_desc %></td>
-        <td><%= number_to_currency(account_transaction.amount, unit: "P") %></td>
-        <td><%= number_to_currency(account_transaction.prev_balance, unit: "P") %></td>
-        <td><%= number_to_currency(account_transaction.new_balance, unit: "P") %></td>
         <td><%= account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></td>
+        <td><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 1 %></td>
+        <td><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 2 %></td>
+        <td><%= number_to_currency(account_transaction.new_balance, unit: "P") %></td>
         <td>
           <div class="pull-right">
             <%= link_to 'View Details', account_transaction, class: "btn btn-sm btn-info" %>
@@ -30,16 +28,3 @@
 <div class="text-md-center">
   <%= will_paginate @account_transactions, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
-
-<!-- ascending/descending order toggle
-  date | credit | debit | balance
-  entries per page
-
-  summary of accounts as of X
-  name | last transaction date | balance
-
-  sumary of accounts details as of X
-  name | beginning amount | total credit | total debit | last transaction date | balance
-
-  tos page
-   -->

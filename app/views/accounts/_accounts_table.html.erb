@@ -11,7 +11,7 @@
   <tbody>
     <% @accounts.each do |account| %>
       <tr>
-        <td><%= account.id.to_s.rjust(6, '0') %></td>
+        <td>#<%= account.id.to_s.rjust(6, '0') %></td>
         <td><%= account.account_type_desc %></td>
         <td><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
         <td><%= number_to_currency(account.balance, unit: "P") %></td>
@@ -24,4 +24,6 @@
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @accounts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<div class="text-md-center">
+  <%= will_paginate @accounts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

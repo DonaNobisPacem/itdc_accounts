@@ -1,34 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Transaction type:</strong>
-  <%= @account_transaction.transaction_type %>
-</p>
+<%= link_to icon("angle-double-left") + " " + @account_transaction.account.account_type_desc + " #" + @account_transaction.account.id.to_s.rjust(6, '0') , account_path(@account_transaction.account) %>
+<hr>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @account_transaction.amount %>
-</p>
+<h1>
+  <b><%= @account_transaction.transaction_type_desc %></b>
+  <small><%=@account_transaction.account.account_type_desc%> #<%= @account_transaction.account.id.to_s.rjust(6, '0') %></small>
+</h1>
 
-<p>
-  <strong>Prev balance:</strong>
-  <%= @account_transaction.prev_balance %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p><h3><b>Amount:</b> <%= number_to_currency(@account_transaction.amount, unit: "P") %></h3></p>
+  </div>
+  <div class="col-md-6">
+    <p><h3><b>Date:</b> <%= @account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></h3></p>
+  </div>
+</div>
 
-<p>
-  <strong>New balance:</strong>
-  <%= @account_transaction.new_balance %>
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <p><h3><b>Previous Balance:</b> <%= number_to_currency(@account_transaction.prev_balance, unit: "P") %></h3></p>
+  </div>
+  <div class="col-md-6">
+    <p><h3><b>New Balance:</b> <%= number_to_currency(@account_transaction.new_balance, unit: "P") %></h3></p>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @account_transaction.description %>
-</p>
+<hr>
 
-<p>
-  <strong>Account:</strong>
-  <%= @account_transaction.account %>
-</p>
-
-<%= link_to 'Edit', edit_account_transaction_path(@account_transaction) %> |
-<%= link_to 'Back', account_transactions_path %>
+<div class="row">
+  <div class="col-md-12">
+    <h3><b>Description:</b></h3>
+    <%= simple_format(@account_transaction.description) %>
+  </div>
+</div>

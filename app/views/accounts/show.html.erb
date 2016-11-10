@@ -5,7 +5,7 @@
 
 <h1>
   <b><%= @account.account_type_desc %></b>
-  <small><%= @account.user.name %></small>
+  <small>#<%= @account.id.to_s.rjust(6, '0') %></small>
 </h1>
 
 <div class="row">
@@ -17,3 +17,13 @@
   </div>
 </div>
 
+<hr>
+<h1>
+  <b>Transaction History</b>
+</h1>
+
+<div class="pull-right">
+  <%= link_to '<i class="fa fa-plus"></i> Credit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 1), class: "btn btn-sm btn-primary" %>
+  <%= link_to '<i class="fa fa-minus"></i> Debit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 2), class: "btn btn-sm btn-warning" %>
+</div>
+<%= render_transactions %>

@@ -1,37 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Account Transactions</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Transaction type</th>
-      <th>Amount</th>
-      <th>Prev balance</th>
-      <th>New balance</th>
-      <th>Description</th>
-      <th>Account</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @account_transactions.each do |account_transaction| %>
-      <tr>
-        <td><%= account_transaction.transaction_type %></td>
-        <td><%= account_transaction.amount %></td>
-        <td><%= account_transaction.prev_balance %></td>
-        <td><%= account_transaction.new_balance %></td>
-        <td><%= account_transaction.description %></td>
-        <td><%= account_transaction.account %></td>
-        <td><%= link_to 'Show', account_transaction %></td>
-        <td><%= link_to 'Edit', edit_account_transaction_path(account_transaction) %></td>
-        <td><%= link_to 'Destroy', account_transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Account transaction', new_account_transaction_path %>
+<h1>
+  <b>Account Transactions</b>
+</h1>
+<%= render "transactions_table" %>

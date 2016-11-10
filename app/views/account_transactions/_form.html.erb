@@ -2,15 +2,13 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :transaction_type %>
-    <%= f.input :amount %>
-    <%= f.input :prev_balance %>
-    <%= f.input :new_balance %>
-    <%= f.input :description %>
-    <%= f.association :account %>
+    <%= f.input :amount, label: "Amount:" %>
+    <%= f.input :description, label: "Description (optional):" %>
+    <%= f.input :transaction_type, as: :hidden, value: @transaction_type.id %>
+    <%= f.input :account_id, as: :hidden, value: @account.id %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, "Submit", class: "btn btn-success pull-right" %>
   </div>
 <% end %>

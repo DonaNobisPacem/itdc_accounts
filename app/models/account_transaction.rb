@@ -4,8 +4,8 @@ class AccountTransaction < ActiveRecord::Base
 
   validates :transaction_type, presence: true
   validates :amount, numericality: { :greater_than_or_equal_to => 0 }
-  validates :prev_balance, numericality: true
-  validates :new_balance, numericality: true
+  # validates :prev_balance, numericality: true
+  # validates :new_balance, numericality: true
 
   before_create :set_computed_balance
 
@@ -25,5 +25,9 @@ class AccountTransaction < ActiveRecord::Base
     @account = self.account
     @account.balance = self.new_balance
     @account.save
+  end
+
+  def transaction_type_desc
+    TransactionType.where(id: transaction_type).first.title
   end
 end

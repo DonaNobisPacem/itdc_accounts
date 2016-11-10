@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'forbidden', to: 'home#forbidden'
+  get 'unregistered', to: 'home#unregistered'
+  get 'tos', to: 'home#tos'
 
   devise_for :users, :controllers => { 
     omniauth_callbacks: 'users/omniauth_callbacks',

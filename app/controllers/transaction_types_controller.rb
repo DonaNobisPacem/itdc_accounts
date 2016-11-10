@@ -1,6 +1,7 @@
 class TransactionTypesController < ApplicationController
   before_action :set_transaction_type, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin
+  before_action :validate_user
   # GET /transaction_types
   # GET /transaction_types.json
   def index

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin, except: [:show, :edit]
-  before_action :restrict_regular_user_to_self, except: [:show]
+  before_action :restrict_user_to_self, only: [:show, :edit]
+  before_action :validate_user
 
   # GET /users
   # GET /users.json
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.password = Devise.friendly_token[0,20]
-    
+
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -81,12 +82,18 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :first_name, :last_name, :admin)
+      params.require(:user).permit(:email, :first_name, :last_name, :admin, :validated)
     end
 
-    def restrict_regular_user_to_self
-      unless current_user.admin
-        redirect_to forbidden_path
+    def restrict_user_to_self
+      if current_user.admin
+        return
+      else
+        if current_user.id == @user.id
+          return
+        else
+          redirect_to forbidden_path
+        end
       end
     end
 end

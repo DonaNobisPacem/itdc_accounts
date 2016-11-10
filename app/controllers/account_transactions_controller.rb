@@ -1,6 +1,7 @@
 class AccountTransactionsController < ApplicationController
   before_action :set_account_transaction, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin, except: [:show]
+  before_action :validate_user
   # GET /account_transactions
   # GET /account_transactions.json
   def index

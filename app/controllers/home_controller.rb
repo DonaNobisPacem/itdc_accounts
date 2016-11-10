@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:unregistered]
+  before_action :validate_user, except: [:tos, :unregistered]
   
   def index
     if current_user.admin
@@ -18,5 +19,8 @@ class HomeController < ApplicationController
   end
 
   def tos
+    if current_user.validated
+      redirect_to root_path
+    end
   end
 end

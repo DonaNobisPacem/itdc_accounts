@@ -1,0 +1,27 @@
+<div class="text-md-center">
+  <h1 class="display-1">Terms of Service</h1>
+
+  <p class="lead">
+    Lorem Ipsum...
+  </p>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= simple_form_for(current_user, url: registration_path(current_user), html: { method: :put }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <h3><b>
+            <%= f.input :validated, label: "I agree to the following terms and conditions.", wrapper_html: { class: "checkbox-lg"} %>
+          </b></h3>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Continue", class: "btn btn-success btn-block" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

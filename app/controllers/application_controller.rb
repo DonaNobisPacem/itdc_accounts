@@ -11,10 +11,18 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-      if current_user.admin 
-        return
-      else
-        redirect_to forbidden_path
-      end
+    if current_user.admin 
+      return
+    else
+      redirect_to forbidden_path
     end
+  end
+
+  def validate_user
+    if current_user.validated
+      return
+    else
+      redirect_to tos_path
+    end
+  end
 end

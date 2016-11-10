@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108075223) do
+ActiveRecord::Schema.define(version: 20161110090657) do
 
   create_table "account_transactions", force: :cascade do |t|
     t.integer  "transaction_type", limit: 4
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20161108075223) do
     t.string   "last_name",              limit: 255
     t.string   "image",                  limit: 255
     t.boolean  "admin",                              default: false
+    t.boolean  "validated",                          default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

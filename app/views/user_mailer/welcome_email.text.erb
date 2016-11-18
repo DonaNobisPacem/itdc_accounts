@@ -1,8 +1,15 @@
-Welcome to the Accounts Management System, <%= @user.email %>
+Dear <%= @user.email %>,
 ===============================================
  
-An administrator has created an account on the system for you.
- 
-To login to the site, just follow <%= link_to "this link", @url %>.
- 
-Thanks for joining and have a great day!
+We have created an account for you in the Accounts Management System (AMS). Please use your Google account as registered below:
+
+Google Account: <%= @user.email %>
+
+You can now log into the AMS through this URL: <%= link_to "http://ams.up-ovpd.ph", @url %>
+
+If you encounter any technical issue, please do not hesitate to contact us at helpdesk@itdc.up.edu.ph or call us at +632 920-2080.
+
+Have a nice day!
+
+Best regards,
+AMS Team

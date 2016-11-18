@@ -4,13 +4,26 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Welcome to the Accounts Management System, <%= @user.email %></h1>
     <p>
-      An administrator has created an account on the system for you.
+      Dear <%= @user.email %>,
     </p>
     <p>
-      To login to the site, just follow <%= link_to "this link", @url %>.
+      We have created an account for you in the Accounts Management System (AMS). Please use your Google account as registered below:
     </p>
-    <p>Thanks for joining and have a great day!</p>
+    <p>
+      Google Account: <%= @user.email %>
+    </p>
+    <p>
+      You can now log into the AMS through this URL: <%= link_to "http://ams.up-ovpd.ph", @url %>
+    </p>
+    <p>
+      If you encounter any technical issue, please do not hesitate to contact us at helpdesk@itdc.up.edu.ph or call us at +632 920-2080.
+    </p>
+    <p>
+      Have a nice day!
+    </p>
+      Best regards,
+      AMS Team
+    </p>
   </body>
 </html>

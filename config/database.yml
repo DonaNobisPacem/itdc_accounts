@@ -51,4 +51,4 @@ production:
   <<: *default
   database: itdc_accounts_production
   username: itdc_accounts
-  password: <%= ENV['ITDC_ACCOUNTS_DATABASE_PASSWORD'] %>
+  password: <%= ENV['itdc_accounts_database_password'] %>

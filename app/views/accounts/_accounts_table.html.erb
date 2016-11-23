@@ -19,8 +19,8 @@
           <div class="pull-right">
             <%= link_to "View details", account, class: "btn btn-sm btn-info" %>
             <% if current_user.admin %>
-              <%= link_to "Credit", account, class: "btn btn-sm btn-primary" %>
-              <%= link_to "Debit", account, class: "btn btn-sm btn-warning" %>
+              <%= link_to '<i class="fa fa-plus"></i> Credit Account'.html_safe, new_account_transaction_path(account_id: account.id, transaction_type: 1), class: "btn btn-sm btn-primary" %>
+              <%= link_to '<i class="fa fa-minus"></i> Debit Account'.html_safe, new_account_transaction_path(account_id: account.id, transaction_type: 2), class: "btn btn-sm btn-warning" %>
             <% end %>
           </div>
         </td>

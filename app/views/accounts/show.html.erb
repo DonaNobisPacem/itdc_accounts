@@ -22,24 +22,33 @@
   <b>Transaction History</b>
 </h1>
 
-<div class="pull-left">
-  <div class="form-inline">
-    <%= form_tag account_path(@account), method: :get, role: "sort" do %>
-      <div class="form-group">
-        <%= label_tag :o, "Sort by date:", class: "form-label form-label-small" %>
-        <%= select_tag :o, options_for_select([["Ascending", "ASC"], ["Descending", "DESC"]]), class: "form-control form-control-sm" %>
-        <%= label_tag :p, "Entries per page:", class: "form-label form-label-small" %>
-        <%= select_tag :p, options_for_select([10, 30, 50], 30), class: "form-control form-control-sm" %>
-        <%= button_tag "<i class=\"fa fa-sort\"></i> Sort".html_safe, class: "btn btn-primary btn-sm", type: :submit %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="pull-left">
+      <div class="form-inline">
+        <%= form_tag account_path(@account), method: :get, role: "sort" do %>
+          <div class="form-group">
+            <%= label_tag :o, "Sort by date:", class: "form-label form-label-small" %>
+            <%= select_tag :o, options_for_select([["Descending", "DESC"], ["Ascending", "ASC"]], selected: params[:o]), class: "form-control form-control-sm" %>
+            <%= label_tag :p, "Entries per page:", class: "form-label form-label-small" %>
+            <%= select_tag :p, options_for_select([10, 30, 50], selected: params[:p]), class: "form-control form-control-sm" %>
+            <%= button_tag "<i class=\"fa fa-sort\"></i> Sort".html_safe, class: "btn btn-primary btn-sm", type: :submit %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <% if current_user.admin %>
+      <div class="pull-right">
+        <%= link_to '<i class="fa fa-plus"></i> Credit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 1), class: "btn btn-sm btn-primary" %>
+        <%= link_to '<i class="fa fa-minus"></i> Debit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 2), class: "btn btn-sm btn-warning" %>
       </div>
     <% end %>
   </div>
 </div>
 
-<% if current_user.admin %>
-  <div class="pull-right">
-    <%= link_to '<i class="fa fa-plus"></i> Credit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 1), class: "btn btn-sm btn-primary" %>
-    <%= link_to '<i class="fa fa-minus"></i> Debit Account'.html_safe, new_account_transaction_path(account_id: @account.id, transaction_type: 2), class: "btn btn-sm btn-warning" %>
+<div class="row">
+  <div class="col-xs-12">
+      <%= render_transactions %>
   </div>
-<% end %>
-<%= render_transactions %>
+</div>

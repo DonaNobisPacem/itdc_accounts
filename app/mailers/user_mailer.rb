@@ -13,7 +13,7 @@ class UserMailer < ApplicationMailer
 
     @account = account
     @url  = 'http://ams.up-ovpd.ph'
-    
+
     mail(to: @user.email, subject: 'Your AMS account has been updated')
   end
 end

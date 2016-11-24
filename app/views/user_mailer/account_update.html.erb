@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>
+      Hi <%= @user_name %>,
+    </p>
+    <p>
+      Your accounts list in the Accounts Management System has been updated by the Administrator, as follows:
+    </p>
+
+    <p>
+      Account Type: <%= @account.account_type_desc %>
+    </p>
+    <p>
+      Update Date: <%= @account.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %>
+    </p>
+    <p>
+      Created/Added By: <%= @admin_name %>
+    </p>
+
+    <p>
+      Please visit the Accounts Management System (AMS) at: <%= link_to "http://ams.up-ovpd.ph", @url %>
+    </p>
+    <p>
+      If you encounter any technical issue, please do not hesitate to contact us at helpdesk@itdc.up.edu.ph or call us at +632 920-2080.
+    </p>
+    <p>
+      Have a nice day!
+    </p>
+      Best regards,
+      AMS Team
+    </p>
+  </body>
+</html>

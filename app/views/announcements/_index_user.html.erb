@@ -1,0 +1,28 @@
+<h1>
+  <b>Announcements</b>
+</h1>
+
+<table class="table table-hover table-sm">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Subject</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= announcement.subject %></td>
+        <td>
+          <div class="pull-right">
+            <%= link_to 'View Details', announcement, class: "btn btn-sm btn-info" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-md-center">
+  <%= will_paginate @announcements, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

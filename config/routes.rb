@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :announcements
   root 'home#index'
   get 'forbidden', to: 'home#forbidden'
   get 'unregistered', to: 'home#unregistered'
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
   resources :transaction_types
   resources :account_types
   resources :account_transactions
+  resources :announcements
   #resources :users, only: [:show]
   #get 'profile', to: 'users#show'
 

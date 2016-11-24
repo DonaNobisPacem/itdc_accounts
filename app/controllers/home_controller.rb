@@ -5,9 +5,11 @@ class HomeController < ApplicationController
   
   def index
     if current_user.admin
-      @users = User.paginate(page: params[:page], per_page: 30) 
+      @users = User.paginate(page: params[:page], per_page: 30)
+      @announcements = Announcement.order(start_date: :desc).limit(3)
     else
       @user = current_user
+      @announcements = Announcement.where(visible_to_users: true).where("start_date <= ?", Date.today ).order(start_date: :desc).limit(3)
       @accounts = @user.accounts.paginate(page: params[:page], per_page: 30)
     end
   end

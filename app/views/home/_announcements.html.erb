@@ -1,0 +1,30 @@
+<h1>
+  <b>Latest Announcements</b>
+</h1>
+
+<table class="table table-hover table-sm">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Date Posted</th>
+      <th>Subject</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @announcements.each do |announcement| %>
+      <tr>
+        <td><%= announcement.start_date.localtime.strftime("%^b-%d-%Y") %></td>
+        <td><%= announcement.subject %></td>
+        <td>
+          <div class="pull-right">
+            <%= link_to 'View Details', announcement, class: "btn btn-sm btn-info" %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "View All Announcements", announcements_path, class: "btn btn-sm btn-block btn-info" %>
+
+<hr>

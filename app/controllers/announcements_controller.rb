@@ -1,15 +1,24 @@
 class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin, except: [:show, :index]
+  before_action :validate_user
 
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = Announcement.all
+    if current_user.admin?
+      @announcements = Announcement.order(start_date: :desc).paginate(page: params[:page], per_page: 30)
+    else
+      @announcements = Announcement.where(visible_to_users: true).where("start_date <= ?", Date.today ).order(start_date: :desc).paginate(page: params[:page], per_page: 30)
+    end
   end
 
   # GET /announcements/1
   # GET /announcements/1.json
   def show
+    if !current_user.admin && !@announcement.visible_to_users
+      redirect_to forbidden_path
+    end
   end
 
   # GET /announcements/new

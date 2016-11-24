@@ -1,29 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @announcement.subject %>
-</p>
+<%= link_to icon("angle-double-left") + " Announcements Index", announcements_path %>
+<hr>
 
-<p>
-  <strong>Message:</strong>
-  <%= @announcement.message %>
-</p>
-
-<p>
-  <strong>Visible to users:</strong>
-  <%= @announcement.visible_to_users %>
-</p>
-
-<p>
-  <strong>Visible to admins:</strong>
-  <%= @announcement.visible_to_admins %>
-</p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @announcement.start_date %>
-</p>
-
-<%= link_to 'Edit', edit_announcement_path(@announcement) %> |
-<%= link_to 'Back', announcements_path %>
+<%= render_announcements_show %>

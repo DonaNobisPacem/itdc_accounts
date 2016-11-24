@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tether.min.js
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require fixedsticky
 //= require_tree .

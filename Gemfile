@@ -63,6 +63,8 @@ group :development do
 end
 
 gem 'simple_form'
+gem 'momentjs-rails', :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 gem 'font-awesome-sass'
 gem 'bootstrap'

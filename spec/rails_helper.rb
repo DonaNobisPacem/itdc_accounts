@@ -64,6 +64,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  config.after(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
 end
 
 Shoulda::Matchers.configure do |config|

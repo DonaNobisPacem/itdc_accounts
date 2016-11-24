@@ -1,0 +1,28 @@
+<h1><b><%= @announcement.subject %></b></h1>
+
+<p>
+  <strong>Message:</strong>
+  <%= @announcement.message %>
+</p>
+
+<p>
+  <strong>Visible to Users?:</strong>
+  <%= @announcement.visible_to_users %>
+</p>
+
+<p>
+  <strong>Visible to Admins?:</strong>
+  <%= @announcement.visible_to_admins %>
+</p>
+
+
+<p>
+  <strong>Start date:</strong>
+  <%= @announcement.start_date.localtime.strftime("%^b-%d-%Y")  %>
+</p>
+
+<hr>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_announcement_path(@announcement) %> |
+  <%= link_to 'Back', :back %>
+</div>

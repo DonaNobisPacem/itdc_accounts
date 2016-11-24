@@ -3,7 +3,11 @@ module AnnouncementsHelper
     if @announcements.empty?
       render "shared/no_entries"
     else
-      render "announcements_table"
+      if current_user.admin?
+        render "announcements_table_admin"
+      else
+        render "announcements_table_user"
+      end
     end
   end
 
@@ -12,14 +16,6 @@ module AnnouncementsHelper
     announcement.visible_to_users ? s += "Users=Yes | " : s += "Users=No | "
     announcement.visible_to_admins ? s += "Admins=Yes" : s += "Admins=No"
     s
-  end
-
-  def render_announcements_index
-    if current_user.admin?
-      render "index_admin"
-    else
-      render "index_user"
-    end
   end
 
   def render_announcements_show

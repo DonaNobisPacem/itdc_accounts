@@ -1,10 +1,7 @@
-<h1>
-  <b>Announcements</b>
-</h1>
-
 <table class="table table-hover table-sm">
   <thead class="thead-inverse">
     <tr>
+      <th>Date Posted</th>
       <th>Subject</th>
       <th></th>
     </tr>
@@ -13,6 +10,7 @@
   <tbody>
     <% @announcements.each do |announcement| %>
       <tr>
+        <td><%= announcement.start_date.localtime.strftime("%^b-%d-%Y") %></td>
         <td><%= announcement.subject %></td>
         <td>
           <div class="pull-right">
@@ -23,6 +21,4 @@
     <% end %>
   </tbody>
 </table>
-<div class="text-md-center">
-  <%= will_paginate @announcements, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>
+<%= link_to "View All Announcements", announcements_path, class: "btn btn-sm btn-block btn-info" %>

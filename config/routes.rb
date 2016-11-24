@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :announcements
   root 'home#index'
   get 'forbidden', to: 'home#forbidden'
   get 'unregistered', to: 'home#unregistered'

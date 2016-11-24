@@ -23,6 +23,16 @@ RSpec.describe AccountTransaction, type: :model do
     it { should validate_presence_of(:account) }
   end
 
+
+  it "returns the transaction type title on transaction_type_desc call" do
+    @user = FactoryGirl.create(:user)
+    @account = FactoryGirl.create(:account, user: @user, balance: 1000.00)
+    @transaction_type = FactoryGirl.create(:transaction_type)
+    @account_transaction = FactoryGirl.create(:account_transaction, account: @account, transaction_type: @transaction_type.id)
+
+    expect( @account_transaction.transaction_type_desc ).to eq(@transaction_type.title)
+  end
+
   describe "After Save callbacks" do
     
     before(:each) do

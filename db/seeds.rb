@@ -6,23 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create(email: "admin@email.com", password: Devise.friendly_token[0,20], admin: true, validated: true)
 TransactionType.create(title: "Credit")
 TransactionType.create(title: "Debit")
-
-case Rails.env
-  when "development"
-    AccountType.create(title: "AccountType 1")
-    AccountType.create(title: "AccountType 2")
-    AccountType.create(title: "AccountType 3")
-    AccountType.create(title: "AccountType 4")
-    AccountType.create(title: "AccountType 5")
-
-    100.times do
-      User.create(
-        email: FFaker::Internet.email,
-        password: "pass1234",
-        first_name: FFaker::Name.first_name,
-        last_name: FFaker::Name.last_name
-        )
-    end
-end

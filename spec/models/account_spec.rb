@@ -30,4 +30,12 @@ RSpec.describe Account, type: :model do
       expect(@account.balance).to eq(@account.beginning_amount)
     end
   end
+
+  it "returns the transaction type title on account_type_desc call" do
+    @user = FactoryGirl.create(:user)
+    @account_type = FactoryGirl.create(:account_type)
+    @account = FactoryGirl.create(:account, user: @user, balance: 1000.00, account_type: @account_type.id)
+    
+    expect( @account.account_type_desc ).to eq(@account_type.title)
+  end
 end

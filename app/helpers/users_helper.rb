@@ -18,4 +18,12 @@ module UsersHelper
       #no edit link
     end
   end
+
+  def show_user_header
+    if @user.first_name.present? && @user.last_name.present?
+      return @user.last_name + ", " + @user.first_name
+    else
+      return @user.email
+    end
+  end
 end

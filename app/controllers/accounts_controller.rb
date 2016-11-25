@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.json
   def show
     order = params[:o].present? ? params[:o] : "desc"
-    page_limit = params[:p].present? ? params[:p] : 30
+    page_limit = params[:p].present? ? params[:p] : 10
     @account_transactions = @account.account_transactions.order(created_at: order).paginate(page: params[:page], per_page: page_limit)
   end
 

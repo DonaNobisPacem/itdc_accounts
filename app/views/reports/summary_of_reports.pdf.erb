@@ -1,12 +1,8 @@
-<%= link_to icon("angle-double-left") + " Reports Index", reports_path %>
-<hr>
 <h1>
   <b>Summary of Accounts</b>
   <small><%= @account_type.title %></small>
 </h1>
 <h3>As of <%= Time.now.strftime("%^b-%d-%Y %H:%M") %></h3>
-
-<%= link_to icon("table") + " Export as CSV", request.parameters.merge({format: :csv}) %> | <%= link_to link_to icon("file-pdf-o") + " Export as PDF", request.parameters.merge({format: :pdf}), target: "_blank" %>
 
 <table class="table table-hover table-sm">
   <thead class="thead-inverse">
@@ -40,6 +36,3 @@
     </tr>
   </tbody>
 </table>
-<div class="text-md-center">
-  <%= will_paginate @accounts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
-</div>

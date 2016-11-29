@@ -26,4 +26,26 @@ class Account < ActiveRecord::Base
   def account_type_desc
     AccountType.where(id: account_type).first.title
   end
+
+  def owner_name
+    u = user
+    n = ""
+    if u.first_name.present? && u.last_name.present?
+      n = u.last_name + ", " + u.first_name
+    else
+      n = u.email
+    end
+    n
+  end
+
+  def self.to_csv(records = [], options = {})
+    CSV.generate(options) do |csv|
+      csv << ['Users', 'Beginning Amount', 'Credits', 'Debits', 'Balance', 'Last Update']
+      records.each do |account|
+        account_last_update = account.account_transactions.present? ? account.account_transactions.last.transaction_type_desc + ": " + account.account_transactions.last.created_at.localtime.strftime("%^b-%d-%Y %H:%M") : "No Transactions Found."
+        csv << [account.owner_name, account.beginning_amount, account.total_credit, account.total_debit, account.balance, account_last_update]
+      end
+      csv << ['TOTALS:', records.sum(:beginning_amount), records.to_a.sum(&:total_credit), records.to_a.sum(&:total_debit), records.sum(:balance), Time.now.strftime("%^b-%d-%Y-%H-%M")]
+    end
+  end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'home#index'
   get 'myprofile', to: 'home#myprofile'
   get 'myaccounts', to: 'home#myaccounts'
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :account_types
   resources :account_transactions
   resources :announcements
+  resources :reports
   #resources :users, only: [:show]
   #get 'profile', to: 'users#show'
 

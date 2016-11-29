@@ -15,8 +15,8 @@
           <small><%= current_user.email %></small><br>
           <b><%= current_user.last_name %>, <%= current_user.first_name %></b><br>
           <%= current_user.user_type %><br>
-          <%= link_to "View My Profile", myprofile_path %><br>
-          <%= link_to "View My Accounts", myaccounts_path %>
+          <%= link_to "My Profile", myprofile_path %><br>
+          <%= link_to "My Accounts", myaccounts_path %>
         </p>
       </li>
     </ul>
@@ -30,13 +30,11 @@
         <%= link_to "<i class=\"fa fa-users\"></i> User Management".html_safe, users_path %><br>
         <%= link_to "<i class=\"fa fa-bullhorn\"></i> Announcements".html_safe, announcements_path %><br>
         <%= link_to "<i class=\"fa fa-list\"></i> Account Types".html_safe, account_types_path %><br>
-        <%= link_to "<i class=\"fa fa-list\"></i> Transaction Types".html_safe, transaction_types_path %><br>
+        <%# link_to "<i class=\"fa fa-list\"></i> Transaction Types".html_safe, transaction_types_path %>
       </li>
     </ul>
   </div>
   <% end %>
-
-  <hr>
 
   <div class="row">
     <ul class="nav nav-sidebar">

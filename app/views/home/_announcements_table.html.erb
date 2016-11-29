@@ -21,4 +21,6 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to "View All Announcements", announcements_path, class: "btn btn-sm btn-block btn-info" %>
+<div class="text-md-center">
+  <%= will_paginate @announcements, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

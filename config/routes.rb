@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'myprofile', to: 'home#myprofile'
+  get 'myaccounts', to: 'home#myaccounts'
   get 'forbidden', to: 'home#forbidden'
   get 'unregistered', to: 'home#unregistered'
   get 'tos', to: 'home#tos'

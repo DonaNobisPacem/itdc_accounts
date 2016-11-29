@@ -5,12 +5,12 @@ class HomeController < ApplicationController
   
   def index
     if current_user.admin
-      @users = User.paginate(page: params[:page], per_page: 30)
-      @announcements = Announcement.where(visible_to_admins: true).where("start_date <= ?", Date.today ).order(start_date: :desc).limit(3)
+      #@users = User.paginate(page: params[:page], per_page: 30)
+      @announcements = Announcement.where(visible_to_admins: true).where("start_date <= ?", Date.today ).order(start_date: :desc).paginate(page: params[:page], per_page: 30)
     else
-      @user = current_user
-      @announcements = Announcement.where(visible_to_users: true).where("start_date <= ?", Date.today ).order(start_date: :desc).limit(3)
-      @accounts = @user.accounts.paginate(page: params[:page], per_page: 30)
+      #@user = current_user
+      @announcements = Announcement.where(visible_to_users: true).where("start_date <= ?", Date.today ).order(start_date: :desc).paginate(page: params[:page], per_page: 30)
+      #@accounts = @user.accounts.paginate(page: params[:page], per_page: 30)
     end
   end
 
@@ -24,5 +24,11 @@ class HomeController < ApplicationController
     if current_user.validated
       redirect_to root_path
     end
+  end
+
+  def myprofile
+  end
+
+  def myaccounts
   end
 end

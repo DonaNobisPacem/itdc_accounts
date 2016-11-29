@@ -15,6 +15,14 @@ class Account < ActiveRecord::Base
     self.balance = self.beginning_amount
   end
 
+  def total_credit
+    account_transactions.where(transaction_type: 1).sum(:amount)
+  end
+
+  def total_debit
+    account_transactions.where(transaction_type: 2).sum(:amount)
+  end
+
   def account_type_desc
     AccountType.where(id: account_type).first.title
   end

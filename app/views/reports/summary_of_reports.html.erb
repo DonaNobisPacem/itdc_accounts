@@ -1,0 +1,44 @@
+<%= link_to icon("angle-double-left") + " Reports Index", reports_path %>
+<hr>
+<h1>
+  <b>Summary of Accounts</b>
+  <small><%= @account_type.title %></small>
+</h1>
+<h3>As of <%= Time.now.strftime("%^b-%d-%Y %H:%M") %></h3>
+
+<%= link_to "Export as CSV", root_path %> | <%= link_to "Export as PDF", root_path %>
+<table class="table table-hover table-sm">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Users</th>
+      <th>Beginning Amount</th>
+      <th>Credits</th>
+      <th>Debits</th>
+      <th>Balance</th>
+      <th>Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account_user_name_or_email(account) %></td>
+        <td><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
+        <td><%= number_to_currency(account.total_credit, unit: "P") %></td>
+        <td><%= number_to_currency(account.total_debit, unit: "P") %></td>
+        <td><%= number_to_currency(account.balance, unit: "P") %></td>
+        <td><%= account_last_update(account) %></td>
+      </tr>
+    <% end %>
+    <tr class="table-success">
+      <td><b>TOTALS: </b></td>
+      <td><%= number_to_currency(@accounts_total.sum(:beginning_amount), unit: "P") %></td>
+      <td><%= number_to_currency(@accounts_total.to_a.sum(&:total_credit), unit: "P") %></td>
+      <td><%= number_to_currency(@accounts_total.to_a.sum(&:total_debit), unit: "P") %></td>
+      <td><%= number_to_currency(@accounts_total.sum(:balance), unit: "P") %></td>
+      <td><%= Time.now.strftime("%^b-%d-%Y %H:%M") %></td>
+    </tr>
+  </tbody>
+</table>
+<div class="text-md-center">
+  <%= will_paginate @accounts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

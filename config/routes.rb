@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   resources :account_types
   resources :account_transactions
   resources :announcements
-  resources :reports
+  resources :reports do
+    collection do
+      get 'sor', to: 'reports#summary_of_reports'
+    end
+  end
   #resources :users, only: [:show]
   #get 'profile', to: 'users#show'
 

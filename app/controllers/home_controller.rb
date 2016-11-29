@@ -27,6 +27,7 @@ class HomeController < ApplicationController
   end
 
   def myprofile
+    @user = current_user
   end
 
   def myaccounts

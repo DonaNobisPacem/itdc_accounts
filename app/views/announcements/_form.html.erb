@@ -5,8 +5,9 @@
     <%= f.input :subject, label: "Subject:" %>
     <%= f.input :message, label: "Message:" %>
     <%= f.input :start_date, as: :date_picker, placeholder: "DD/MM/YYYY", label: "Start Date:" %>
-    <%= f.input :visible_to_users, as: :radio_buttons, label: "Visible to Users?:" %>
-    <%= f.input :visible_to_admins, as: :radio_buttons, label: "Visible to Admins?:" %>
+    <%= f.label "Visibility:" %>
+    <%= f.input :visible_to_admins, as: :boolean, label: "Admins" %>
+    <%= f.input :visible_to_users, as: :boolean, label: "Users" %>
   </div>
 
   <div class="form-actions">

@@ -82,5 +82,5 @@ gem 'figaro'
 gem 'searchkick'
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary', '~> 0.9.9.3'
 

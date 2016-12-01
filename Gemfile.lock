@@ -367,7 +367,7 @@ DEPENDENCIES
   wicked_pdf
   will_paginate
   will_paginate-bootstrap4
-  wkhtmltopdf-binary (~> 0.9.9.3)
+  wkhtmltopdf-binary
 
 BUNDLED WITH
    1.13.1

@@ -19,19 +19,19 @@
     <% @accounts.each do |account| %>
       <tr>
         <td><%= account_user_name_or_email(account) %></td>
-        <td><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
-        <td><%= number_to_currency(account.total_credit, unit: "P") %></td>
-        <td><%= number_to_currency(account.total_debit, unit: "P") %></td>
-        <td><%= number_to_currency(account.balance, unit: "P") %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.total_credit, unit: "P") %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.total_debit, unit: "P") %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.balance, unit: "P") %></td>
         <td><%= account_last_update(account) %></td>
       </tr>
     <% end %>
     <tr class="table-success">
       <td><b>TOTALS: </b></td>
-      <td><%= number_to_currency(@accounts_total.sum(:beginning_amount), unit: "P") %></td>
-      <td><%= number_to_currency(@accounts_total.to_a.sum(&:total_credit), unit: "P") %></td>
-      <td><%= number_to_currency(@accounts_total.to_a.sum(&:total_debit), unit: "P") %></td>
-      <td><%= number_to_currency(@accounts_total.sum(:balance), unit: "P") %></td>
+      <td class="text-xs-right"><%= number_to_currency(@accounts_total.sum(:beginning_amount), unit: "P") %></td>
+      <td class="text-xs-right"><%= number_to_currency(@accounts_total.to_a.sum(&:total_credit), unit: "P") %></td>
+      <td class="text-xs-right"><%= number_to_currency(@accounts_total.to_a.sum(&:total_debit), unit: "P") %></td>
+      <td class="text-xs-right"><%= number_to_currency(@accounts_total.sum(:balance), unit: "P") %></td>
       <td><%= Time.now.strftime("%^b-%d-%Y %H:%M") %></td>
     </tr>
   </tbody>

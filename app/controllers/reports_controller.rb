@@ -17,11 +17,12 @@ class ReportsController < ApplicationController
       format.csv { send_data Account.to_csv(@accounts_total), filename: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.csv" }
       format.pdf do
         render pdf: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}",
-        template: "reports/summary_of_reports.pdf.erb",
-        locals: {
-          accounts: @accounts_total,
-          account_type: @account_type
-        }
+          layout: "pdf.html",
+          template: "reports/summary_of_reports.pdf.erb",
+          locals: {
+            accounts: @accounts_total,
+            account_type: @account_type
+          }
       end
     end
   end

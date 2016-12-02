@@ -1,0 +1,67 @@
+<h1>
+  <b>Account Details</b>
+  <small>Report</small>
+</h1>
+
+
+<div class="form-inline">
+  <%= form_tag accd_reports_path, method: :get, role: "filter" do %>
+    <div class="form-group">
+      <%= label_tag :aid, "#{@account.user.name}'s Accounts:", class: "form-label form-label-small" %>
+      <%= select_tag :aid, options_from_collection_for_select(@accounts, :id, :account_type_desc, selected: params[:aid]), class: "form-control form-control-sm" %>
+      <%= button_tag "<i class=\"fa fa-sort\"></i> Submit".html_safe, class: "btn btn-primary btn-sm", type: :submit %>
+    </div>
+  <% end %>
+</div>
+
+<hr>
+<h3>As of <%= Time.now.strftime("%^b-%d-%Y %H:%M") %></h3>
+<h1>
+  <b><%= @account.user.name %></b>
+</h1>
+
+<h1>
+  <b><%= @account.account_type_desc %></b>
+  <small>#<%= @account.id.to_s.rjust(6, '0') %></small>
+</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <p><h3><b>Beginning Amount:</b> <%= number_to_currency(@account.beginning_amount, unit: "P") %></h3></p>
+  </div>
+  <div class="col-md-6">
+    <p><h3><b>Current Balance:</b> <%= number_to_currency(@account.balance, unit: "P") %></h3></p>
+  </div>
+</div>
+
+<hr>
+<h1>
+  <b>Transaction History</b>
+</h1>
+<%= link_to icon("table") + " Export as CSV", request.parameters.merge({format: :csv}) %> | 
+<%= link_to_if false, icon("file-pdf-o") + " Export as PDF", request.parameters.merge({format: :pdf}), target: "_blank" %>
+<div class="row">
+  <div class="col-xs-12">
+      <table class="table table-hover table-sm">
+        <thead class="thead-inverse">
+          <tr>
+            <th>Date</th>
+            <th>Credit</th>
+            <th>Debit</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @account_transactions.each do |account_transaction| %>
+            <tr>
+              <td><%= account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></td>
+              <td><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 1 %></td>
+              <td><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 2 %></td>
+              <td><%= number_to_currency(account_transaction.new_balance, unit: "P") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+  </div>
+</div>

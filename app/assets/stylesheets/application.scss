@@ -37,3 +37,9 @@ $enable-flex: true;
   width:18px; 
   height:18px;
 }
+
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  #sidebar { display: none; }
+  #content { width: 100%; }
+}

@@ -38,6 +38,23 @@ class Account < ActiveRecord::Base
     n
   end
 
+  def accd_to_csv
+    CSV.generate do |csv|
+      csv << ['Owner Name', 'Email', 'Account Type', 'Beginning Amount', 'Balance']
+      csv << [owner_name, user.email, account_type_desc, beginning_amount, balance]
+      csv << ['Date', 'Credit', 'Debit', 'Balance']
+      account_transactions.each do |transaction|
+        if transaction.transaction_type == 1
+          csv << [transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M"), transaction.amount, '', transaction.new_balance]
+        elsif transaction.transaction_type == 2
+          csv << [transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M"), '',transaction.amount, transaction.new_balance]
+        else
+        end
+      end
+      csv << ['TOTALS:', total_credit, total_debit, balance]
+    end
+  end
+
   def self.to_csv(records = [], options = {})
     CSV.generate(options) do |csv|
       csv << ['Users', 'Beginning Amount', 'Credits', 'Debits', 'Balance', 'Last Update']

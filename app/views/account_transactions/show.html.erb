@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <%= link_to icon("angle-double-left") + " " + @account_transaction.account.account_type_desc + " #" + @account_transaction.account.id.to_s.rjust(6, '0') , account_path(@account_transaction.account) %>
 <hr>
 
@@ -36,4 +34,4 @@
 </div>
 
 <hr>
-<%= link_to "View Account", @account_transaction.account, class: "btn btn-primary btn-block" %>
+<%= link_to "Back", :back, class: "btn btn-primary btn-block" %>

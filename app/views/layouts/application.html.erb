@@ -25,10 +25,9 @@
                 <div class="col-md-10">
                   <% flash.each do |name, msg| %>
                     <% if user_signed_in? %>
-                            <% content_tag :div, msg, class: "alert alert-#{name}" %>
-                          <% end %>
-                      <% end %>
-
+                      <%= content_tag :div, msg, class: bootstrap_class_for(name) %>
+                    <% end %>
+                  <% end %>
                   <%= yield %>
                 </div>
                 <div class="col-md-1">

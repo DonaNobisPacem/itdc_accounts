@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
   end
 
   def name
-    last_name + ", " + first_name
+    if last_name.present? && first_name.present?
+      last_name + ", " + first_name
+    else
+      email
+    end
   end
 end

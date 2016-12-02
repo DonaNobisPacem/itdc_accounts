@@ -1,0 +1,1 @@
+$("#aid").empty().append("<%= escape_javascript(render(partial: @accd_accounts)) %>")

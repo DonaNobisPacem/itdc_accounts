@@ -15,8 +15,8 @@
           <small><%= current_user.email %></small><br>
           <b><%= current_user.last_name %>, <%= current_user.first_name %></b><br>
           <%= current_user.user_type %><br>
-          <%= link_to "<i class=\"fa fa-user\"></i> My Profile", myprofile_path %><br>
-          <%= link_to "<i class=\"fa fa-credit-card\"></i> My Accounts", myaccounts_path %><br>
+          <%= link_to "<i class=\"fa fa-user\"></i> My Profile".html_safe, myprofile_path %><br>
+          <%= link_to "<i class=\"fa fa-credit-card\"></i> My Accounts".html_safe, myaccounts_path %><br>
           <%= link_to "<i class=\"fa fa-sign-out\"></i> Sign out".html_safe, destroy_user_session_path, method: :delete %>
         </p>
       </li>

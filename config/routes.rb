@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   scope "/admin" do
     #resources :users, except: [:show]
     resources :users
+    get 'accounts_management', to: 'users#accounts_management'
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

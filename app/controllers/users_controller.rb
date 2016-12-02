@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def accounts_management
+    if params[:q].present? || params[:t].present?
+      search = params[:q].present? ? params[:q] : "*"
+      where = {}
+      where[:admin] = params[:t] if params[:t].present?
+
+      @users = User.search search, where: where
+    else
+      @users = User.paginate(page: params[:page], per_page: 30)
+    end
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

@@ -16,7 +16,7 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data Account.to_csv(@accounts_total), filename: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.csv" }
-      format.pdf { send_data pdf.render, filename: 'summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf', type: 'application/pdf', disposition: 'inline' }
+      format.pdf { send_data pdf.render, filename: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf", type: 'application/pdf', disposition: 'inline' }
     end
   end
 
@@ -30,15 +30,7 @@ class ReportsController < ApplicationController
       respond_to do |format|
         format.html
         format.csv { send_data @account.accd_to_csv, filename: "#{@account.owner_name}_account_details_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.csv" }
-        format.pdf { send_data pdf.render, filename: '#{@account.owner_name}_account_details_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf', type: 'application/pdf', disposition: 'inline' }
-        # format.pdf do
-        #   render pdf: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}",
-        #     template: "reports/summary_of_reports.pdf.erb",
-        #     locals: {
-        #       accounts: @accounts_total,
-        #       account_type: @account_type
-        #     }
-        # end
+        format.pdf { send_data pdf.render, filename: "#{@account.owner_name}_account_details_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf", type: 'application/pdf', disposition: 'inline' }
       end
     else
       redirect_to reports_path, flash: { error: "No Account Selected." }

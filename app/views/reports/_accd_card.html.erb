@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header" role="tab" id="headingTwo">
+    <h3 class="text-xs-center"><b>
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+        Account Details
+      </a>
+    </b></h5>
+  </div>
+
+  <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+    <div class="card-block">
+      Account Details description
+      <hr>
+      <div class="form-inline">
+        <%= form_tag accd_reports_path, method: :get, role: "filter" do %>
+          <div class="form-group">
+            <%= label_tag :uid, "Select User:", class: "form-label form-label-small" %>
+            <%= select_tag :uid, options_from_collection_for_select(User.all, :id, :name), include_blank: true, class: "form-control form-control-sm" %>
+            <div id="accounts_dropdown" style="display: none;">
+              <%= label_tag :aid, "Select Account Type:", class: "form-label form-label-small" %>
+              <%= select_tag :aid, options_from_collection_for_select([], :id, :account_type_desc), class: "form-control form-control-sm" %>
+              <%= button_tag "<i class=\"fa fa-sort\"></i> Submit".html_safe, class: "btn btn-primary btn-sm", type: :submit %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

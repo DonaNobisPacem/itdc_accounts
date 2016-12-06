@@ -47,24 +47,24 @@
       <table class="table table-hover table-sm">
         <thead class="thead-inverse">
           <tr>
-            <th>Date</th>
-            <th class="text-xs-right">Credit</th>
-            <th class="text-xs-right">Debit</th>
-            <th class="text-xs-right">Balance</th>
+            <th class="text-xs-center">Date</th>
+            <th class="text-xs-center">Credit</th>
+            <th class="text-xs-center">Debit</th>
+            <th class="text-xs-center">Balance</th>
           </tr>
         </thead>
 
         <tbody>
           <% @account_transactions.each do |account_transaction| %>
             <tr>
-              <td><%= account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></td>
+              <td class="text-xs-center"><%= account_transaction.created_at.localtime.strftime("%^b-%d-%Y %H:%M") %></td>
               <td class="text-xs-right"><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 1 %></td>
               <td class="text-xs-right"><%= number_to_currency(account_transaction.amount, unit: "P") if account_transaction.transaction_type == 2 %></td>
               <td class="text-xs-right"><%= number_to_currency(account_transaction.new_balance, unit: "P") %></td>
             </tr>
           <% end %>
           <tr class="table-success">
-            <td><b>TOTALS: </b></td>
+            <td class="text-xs-center"><b>TOTALS: </b></td>
             <td class="text-xs-right"><%= number_to_currency(@account.total_credit, unit: "P") %></td>
             <td class="text-xs-right"><%= number_to_currency(@account.total_debit, unit: "P") %></td>
             <td class="text-xs-right"></td>

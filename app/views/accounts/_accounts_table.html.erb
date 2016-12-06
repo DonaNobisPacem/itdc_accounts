@@ -2,9 +2,9 @@
   <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>Account Type</th>
-      <th>Beginning Amount</th>
-      <th>Current Balance</th>
+      <th class="text-xs-center">Account Type</th>
+      <th class="text-xs-center">Beginning Amount</th>
+      <th class="text-xs-center">Current Balance</th>
       <th></th>
     </tr>
   </thead>
@@ -12,9 +12,9 @@
     <% @accounts.each do |account| %>
       <tr>
         <td>#<%= account.id.to_s.rjust(6, '0') %></td>
-        <td><%= account.account_type_desc %></td>
-        <td><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
-        <td><%= number_to_currency(account.balance, unit: "P") %></td>
+        <td class="text-xs-center"><%= account.account_type_desc %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.beginning_amount, unit: "P") %></td>
+        <td class="text-xs-right"><%= number_to_currency(account.balance, unit: "P") %></td>
         <td>
           <div class="pull-right">
             <%= link_to "View details", account, class: "btn btn-sm btn-info" %>

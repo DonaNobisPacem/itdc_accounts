@@ -16,7 +16,7 @@
         Summary of accounts description
         <hr>
         <div class="form-inline">
-          <%= form_tag sor_reports_path, method: :get, role: "filter" do %>
+          <%= form_tag soa_reports_path, method: :get, role: "filter" do %>
             <div class="form-group">
               <%= label_tag :at, "Select Account Type:", class: "form-label form-label-small" %>
               <%= select_tag :at, options_from_collection_for_select(AccountType.all, :id, :title), class: "form-control form-control-sm" %>

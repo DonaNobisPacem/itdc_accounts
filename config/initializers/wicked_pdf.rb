@@ -8,6 +8,6 @@
 #
 # https://github.com/mileszs/wicked_pdf/blob/master/README.md
 
-WickedPdf.config = {
-  layout: 'pdf.html'
-}
+# WickedPdf.config = {
+#   layout: 'pdf.html'
+# }

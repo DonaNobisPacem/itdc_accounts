@@ -81,6 +81,7 @@ gem 'figaro'
 
 gem 'searchkick'
 
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'prawn-rails'
+# gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
 

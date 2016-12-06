@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :announcements
   resources :reports do
     collection do
-      get 'sor', to: 'reports#summary_of_reports'
+      get 'soa', to: 'reports#summary_of_accounts'
       get 'accd', to: 'reports#account_details'
       get 'accd_get_accounts', to: 'reports#accd_get_accounts'
     end

@@ -21,12 +21,13 @@ class SummaryOfAccountsPdf < BasePdf
       table table_data do
         self.header = true
         row(0).font_style = :bold
-        row(0).background_color = '373a3c'
-        row(0).text_color = "FFFFFF"
+        #row(0).background_color = '373a3c'
+        #row(0).text_color = "FFFFFF"
         row(-1).font_style = :bold
-        row(-1).background_color = '373a3c'
-        row(-1).text_color = "FFFFFF"
+        #row(-1).background_color = '373a3c'
+        #row(-1).text_color = "FFFFFF"
         columns(1..4).align = :right
+        row(0).columns(0..5).align = :center
       end
     end
   end

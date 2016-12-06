@@ -12,11 +12,11 @@ class BasePdf < Prawn::Document
     #image "#{Rails.root}/public/logo.png", height: 30
     #text "My Organization", size: 18, style: :bold, align: :center
     if title
-      text title, size: 24, style: :bold, align: :center
+      text title, size: 12, style: :bold, align: :center
       if subtitle
-        text subtitle, size: 20, style: :bold, align: :center
+        text subtitle, size: 12, style: :bold, align: :center
       end
-      text "As of #{Time.now.strftime("%^b-%d-%Y %H:%M")}", size: 18, style: :bold_italic, align: :center
+      text "As of #{Time.now.strftime("%^b-%d-%Y %H:%M")}", size: 12, style: :bold_italic, align: :center
     end
   end
 

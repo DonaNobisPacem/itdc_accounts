@@ -6,12 +6,11 @@ class AccountDetailsPdf < BasePdf
     super()
     @account = account
 
-    header 'Account Details', @account.owner_name + ": " + @account.account_type_desc
+    header 'Account Details' + " - " + @account.account_type_desc, @account.owner_name 
     move_down 20
-    text 'Beginning Amount: ' + ntc(@account.beginning_amount), style: :bold, size: 18
-    text 'Current Balance: ' + ntc(@account.balance), style: :bold, size: 18
+    text 'Beginning Amount: ' + ntc(@account.beginning_amount), size: 12
+    text 'Current Balance: ' + ntc(@account.balance), size: 12
     move_down 20
-    text 'Transaction History:', style: :bold, size: 18
     display_event_table
     footer
   end
@@ -26,12 +25,13 @@ class AccountDetailsPdf < BasePdf
         self.header = true
         self.width = 540
         row(0).font_style = :bold
-        row(0).background_color = '373a3c'
-        row(0).text_color = "FFFFFF"
+        #row(0).background_color = '373a3c'
+        #row(0).text_color = "FFFFFF"
         row(-1).font_style = :bold
-        row(-1).background_color = '373a3c'
-        row(-1).text_color = "FFFFFF"
+        #row(-1).background_color = '373a3c'
+        #row(-1).text_color = "FFFFFF"
         columns(1..3).align = :right
+        row(0).columns(0..3).align = :center
       end
     end
   end

@@ -6,7 +6,8 @@ class SummaryOfAccountsPdf < BasePdf
     super()
     @accounts = accounts
 
-    header 'Summary of Accounts Report'
+    header 'Summary of Accounts', @accounts.first.account_type_desc
+    move_down 20
     display_event_table
     footer
   end
@@ -17,19 +18,23 @@ class SummaryOfAccountsPdf < BasePdf
     if table_data.empty?
       text "No Accounts Found"
     else
-      table table_data,
-        header: true
-        #row(0).font_style = :bold
-        #header: TABLE_HEADERS
-        #column_widths: TABLE_WIDTHS,
-        #row_colors: TABLE_ROW_COLORS,
-        #font_size: TABLE_FONT_SIZE
+      table table_data do
+        self.header = true
+        row(0).font_style = :bold
+        row(0).background_color = '373a3c'
+        row(0).text_color = "FFFFFF"
+        row(-1).font_style = :bold
+        row(-1).background_color = '373a3c'
+        row(-1).text_color = "FFFFFF"
+        columns(1..4).align = :right
+      end
     end
   end
 
   def table_data
-    @table_data = TABLE_HEADERS
-    @table_data += @accounts.map { |a| [a.owner_name, a.beginning_amount, a.total_credit, a.total_debit, a.balance, account_last_update(a)] }
+    TABLE_HEADERS + 
+    @accounts.map { |a| [a.owner_name, ntc(a.beginning_amount), ntc(a.total_credit), ntc(a.total_debit), ntc(a.balance), account_last_update(a)] } + 
+    [["TOTALS:", ntc(@accounts.sum(:beginning_amount)), ntc(@accounts.to_a.sum(&:total_credit)), ntc(@accounts.to_a.sum(&:total_debit)), ntc(@accounts.sum(:balance)), Time.now.strftime("%^b-%d-%Y %H:%M")]]
   end
 
   def account_last_update(account)

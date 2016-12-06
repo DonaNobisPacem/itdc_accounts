@@ -16,13 +16,6 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { send_data Account.to_csv(@accounts_total), filename: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.csv" }
-      # format.pdf do
-      #   render pdf: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}",
-      #     template: "reports/summary_of_reports.pdf.erb",
-      #     locals: {
-      #       accounts: @accounts_total,
-      #       account_type: @account_type
-      #     }
       format.pdf { send_data pdf.render, filename: 'summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf', type: 'application/pdf', disposition: 'inline' }
     end
   end
@@ -32,10 +25,12 @@ class ReportsController < ApplicationController
       @account = Account.find_by_id(params[:aid])
       @accounts = @account.user.accounts
       @account_transactions = @account.account_transactions.order(created_at: :asc)
+      pdf = AccountDetailsPdf.new(@account)
 
       respond_to do |format|
         format.html
         format.csv { send_data @account.accd_to_csv, filename: "#{@account.owner_name}_account_details_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.csv" }
+        format.pdf { send_data pdf.render, filename: '#{@account.owner_name}_account_details_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}.pdf', type: 'application/pdf', disposition: 'inline' }
         # format.pdf do
         #   render pdf: "summary_of_reports_#{Time.now.strftime("%^b-%d-%Y-%H-%M")}",
         #     template: "reports/summary_of_reports.pdf.erb",

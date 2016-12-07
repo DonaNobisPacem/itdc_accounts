@@ -63,7 +63,7 @@ set :stage, :production
 #   }
 
 
-server '45.58.38.202',
+server '104.245.36.152',
   user: 'ams',
   roles: %w{web app db},
   ssh_options: {

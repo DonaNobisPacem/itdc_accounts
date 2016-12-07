@@ -1,7 +1,7 @@
 class UserMailer < ApplicationMailer
   def welcome_email(user)
     @user = user
-    @url  = 'http://ams.up-ovpd.ph'
+    @url  = 'http://ams.systems24by7.com'
     mail(to: @user.email, subject: 'Welcome to the Accounts Management System')
   end
 
@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     @admin_name = @admin.first_name.present? ? @admin.first_name : @admin.email
 
     @account = account
-    @url  = 'http://ams.up-ovpd.ph'
+    @url  = 'http://ams.systems24by7.com'
 
     mail(to: @user.email, subject: 'Your AMS account has been updated')
   end

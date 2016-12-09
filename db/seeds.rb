@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(email: "acnopre@upsitf.org", password: Devise.friendly_token[0,20], admin: true, validated: true)
+User.create(email: "upitdc.ams@gmail.com", password: Devise.friendly_token[0,20], admin: true, validated: true)
 TransactionType.create(title: "Credit")
 TransactionType.create(title: "Debit")

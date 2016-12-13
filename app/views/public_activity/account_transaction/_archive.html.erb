@@ -1,0 +1,7 @@
+<tr>
+  <td><%= activity.created_at.localtime.strftime("%^b-%d-%Y %H:%M")%></td>
+  <td><%= activity.owner.name + " (#{activity.ip_address})"%></td>
+  <td>Delete</td>
+  <td>Account Transaction</td>
+  <td><%= activity.trackable.id.to_s.rjust(6, '0') %></td>
+</tr> 

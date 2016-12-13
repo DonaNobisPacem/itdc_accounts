@@ -37,6 +37,7 @@ class AnnouncementsController < ApplicationController
 
     respond_to do |format|
       if @announcement.save
+        @announcement.create_activity :create, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @announcement, notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: @announcement }
       else
@@ -51,6 +52,7 @@ class AnnouncementsController < ApplicationController
   def update
     respond_to do |format|
       if @announcement.update(announcement_params)
+        @announcement.create_activity :update, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @announcement, notice: 'Announcement was successfully updated.' }
         format.json { render :show, status: :ok, location: @announcement }
       else

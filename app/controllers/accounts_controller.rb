@@ -48,6 +48,7 @@ class AccountsController < ApplicationController
       
     respond_to do |format|
       if @account.save
+        @account.create_activity :create, owner: current_user, ip_address: current_user.current_sign_in_ip
         UserMailer.account_update(@user, current_user, @account).deliver_later
         format.html { redirect_to @account, notice: 'Account was successfully created.' }
         format.json { render :show, status: :created, location: @account }

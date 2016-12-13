@@ -53,6 +53,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        @user.create_activity :create, owner: current_user, ip_address: current_user.current_sign_in_ip
         UserMailer.welcome_email(@user).deliver_later
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
@@ -68,6 +69,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        @user.create_activity :update, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else

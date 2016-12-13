@@ -29,6 +29,7 @@ class AccountTypesController < ApplicationController
 
     respond_to do |format|
       if @account_type.save
+        @account_type.create_activity :create, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @account_type, notice: 'Account type was successfully created.' }
         format.json { render :show, status: :created, location: @account_type }
       else
@@ -43,6 +44,7 @@ class AccountTypesController < ApplicationController
   def update
     respond_to do |format|
       if @account_type.update(account_type_params)
+        @account_type.create_activity :update, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @account_type, notice: 'Account type was successfully updated.' }
         format.json { render :show, status: :ok, location: @account_type }
       else

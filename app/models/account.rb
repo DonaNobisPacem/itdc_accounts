@@ -10,6 +10,7 @@ class Account < ActiveRecord::Base
   accepts_nested_attributes_for :account_transactions, allow_destroy: true
 
   before_create :set_balance
+  include PublicActivity::Common
 
   def set_balance
     self.balance = self.beginning_amount

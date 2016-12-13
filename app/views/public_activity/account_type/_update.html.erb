@@ -1,0 +1,7 @@
+<tr>
+  <td><%= activity.created_at.localtime.strftime("%^b-%d-%Y %H:%M")%></td>
+  <td><%= activity.owner.name + " (#{activity.ip_address})"%></td>
+  <td>Update</td>
+  <td>Account Type</td>
+  <td><%= link_to activity.trackable.title, activity.trackable %></td>
+</tr> 

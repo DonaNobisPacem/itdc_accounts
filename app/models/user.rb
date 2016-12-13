@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :timeoutable,
+  devise :database_authenticatable, :registerable,# :timeoutable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
 
@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :accounts, allow_destroy: true
 
   searchkick
-
+  include PublicActivity::Common
+  
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 

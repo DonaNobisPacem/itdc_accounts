@@ -11,8 +11,9 @@ $enable-flex: true;
 } 
 
 .sidebar {
-  background-color: #091323; 
   height: 100vh;
+  overflow: auto;
+  background-color: #091323; 
 }
 
 .nav-sidebar {

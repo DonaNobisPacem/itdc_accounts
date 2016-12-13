@@ -61,6 +61,7 @@ class AccountTransactionsController < ApplicationController
 
     respond_to do |format|
       if @account_transaction.save
+        @account_transaction.create_activity :create, owner: current_user, ip_address: current_user.current_sign_in_ip
         format.html { redirect_to @account_transaction, notice: 'Account transaction was successfully created.' }
         format.json { render :show, status: :created, location: @account_transaction }
       else

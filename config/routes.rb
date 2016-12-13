@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'activities/index'
+
   root 'home#index'
   get 'myprofile', to: 'home#myprofile'
   get 'myaccounts', to: 'home#myaccounts'
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
   resources :account_types
   resources :account_transactions
   resources :announcements
+  resources :activities
   resources :reports do
     collection do
       get 'soa', to: 'reports#summary_of_accounts'

@@ -1,0 +1,53 @@
+<h1><b>Application Log</b></h1>
+<hr>
+
+<%= form_tag activities_path, method: :get, role: "search" do %>
+  <div class="form-group">
+      <div class="input-group date datetimepicker" style="padding-bottom: 5px;">
+        <span class="input-group-addon">From: </span>
+        <%= text_field_tag :start_date, params[:start_date], placeholder: "DD/MM/YYYY", class: "form-control string date_picker", "data-date-options": "{\"locale\":\"en\",\"format\":\"DD/MM/YYYY\",\"dayViewHeaderFormat\":\"MMMM YYYY\"}" %>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <%= icon("calendar") %>
+          </button>
+        </span>
+      </div>
+
+      <div class="input-group date datetimepicker" style="padding-bottom: 5px;"">
+        <span class="input-group-addon">To: </span>
+        <%= text_field_tag :end_date, params[:end_date], placeholder: "DD/MM/YYYY", class: "form-control string date_picker", "data-date-options": "{\"locale\":\"en\",\"format\":\"DD/MM/YYYY\",\"dayViewHeaderFormat\":\"MMMM YYYY\"}" %>
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">
+            <%= icon("calendar") %>
+          </button>
+        </span>
+      </div>
+
+      <%= button_tag "<i class=\"fa fa-search\"></i> Search".html_safe, class: "btn btn-block btn-sm btn-primary", type: :submit %>
+  </div>
+<% end %>
+
+<table class="table table-hover table-sm">
+  <thead class="thead-inverse">
+    <tr>
+      <th class="text-xs-center">Date</th>
+      <th class="text-xs-center">User</th>
+      <th class="text-xs-center">Action</th>
+      <th class="text-xs-center">Subject Type</th>
+      <th class="text-xs-center">Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activities.each do |activity| %>
+      <%= render_activity activity %>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-md-center">
+  <%= will_paginate @activities, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+
+
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker();
+</script>

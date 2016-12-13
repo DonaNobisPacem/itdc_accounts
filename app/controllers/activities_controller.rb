@@ -1,4 +1,7 @@
 class ActivitiesController < ApplicationController
+  before_action :authenticate_admin
+  before_action :validate_user
+
   def index
     if params[:start_date].present? && params[:end_date].present?
       start_date = params[:start_date].to_datetime

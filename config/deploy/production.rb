@@ -7,6 +7,7 @@ set :stage, :production
 
 server '104.245.36.152', user: 'ams', roles: %w{app db web}
 server '45.58.38.202', user: 'ams', roles: %w{app db web}
+set :migration_servers, ['104.245.36.152', '45.58.38.202']
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 

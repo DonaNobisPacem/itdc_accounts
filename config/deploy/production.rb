@@ -62,7 +62,6 @@ set :stage, :production
 #     # password: 'please use keys'
 #   }
 
-
 server '104.245.36.152',
   user: 'ams',
   roles: %w{web app db},
@@ -73,15 +72,3 @@ server '104.245.36.152',
     auth_methods: %w(publickey password)
     # password: 'please use keys'
   }
-
-server '45.58.38.202',
-  user: 'ams',
-  roles: %w{web app db},
-  ssh_options: {
-    user: 'ams', # overrides user setting above
-    keys: %w(/home/donanobispacem/.ssh/itdc_ssh),
-    forward_agent: true,
-    auth_methods: %w(publickey password)
-    # password: 'please use keys'
-  }
-

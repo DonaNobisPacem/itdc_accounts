@@ -26,4 +26,9 @@ class ApplicationController < ActionController::Base
       redirect_to tos_path
     end
   end
+
+  def after_sign_in_path_for(resource_or_scope)
+    resource.create_activity :sign_in, owner: current_user, ip_address: current_user.current_sign_in_ip
+    stored_location_for(resource_or_scope) || signed_in_root_path(resource_or_scope)
+  end
 end

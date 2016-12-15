@@ -19,13 +19,12 @@
   <b>Accounts</b>
 </h1>
 
-<% if current_user.admin %>
+<% if current_user.admin && current_user != @user %>
   <%= link_to '<i class="fa fa-plus"></i> Add Account'.html_safe, new_account_path(user_id: @user.id), class: "pull-right" %>
 <% end %>
 <%= render_accounts %>
 
 <hr>
 <div class="pull-right">
-  <%= render_edit %> | 
   <%= link_to 'Back', root_path %>
 </div>

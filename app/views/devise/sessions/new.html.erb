@@ -1,23 +1,22 @@
-<div class="row flex-items-md-middle">
-  <div class="col-md-2">
+<div class="row flex-items-xs-middle" style="padding-top: 90px;">
+  <div class="col-xs-2">
   </div>
-  <div class="col-md-8">
-    <h1 class="text-md-center"><b>Accounts Management System</b></h1>
 
-
+  <div class="col-xs-8">
+    <h1 class="text-xs-center" style="padding-bottom: 60px;"><b>Accounts Management System</b></h1>
     <div class="card">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row flex-items-xs-middle">
-          <div class="col-md-3">
-            <%= image_tag "google-icon.png", class: "card-img-top img-fluid", alt: "Google Icon" %>
-          </div>
-          <div class="card-block col-md-9">
-            <h1><b><%= link_to "Sign in with Google".html_safe, user_google_oauth2_omniauth_authorize_path %></b></h1>
+          <div class="col-xs-12">
+            <h1 class="text-xs-center">
+              <%= image_tag "google-icon.png", size: "100x100", class: "card-img-top img-fluid", alt: "Google Icon" %>
+              <b><%= link_to "Sign in with Google".html_safe, user_google_oauth2_omniauth_authorize_path %></b>
+            </h1>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-2">
+  <div class="col-xs-2">
   </div>
 </div>
